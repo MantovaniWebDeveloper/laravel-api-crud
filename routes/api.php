@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::get('/', function() {
   return 'ciao sono api';
 });
+
+
+Route::get('/products', 'Api\ProductController@index');
+Route::post('/products', 'Api\ProductController@create');
+Route::get('/products/{id}', 'Api\ProductController@show');
+//sarebbe put
+Route::post('/products/{id}', 'Api\ProductController@update');
