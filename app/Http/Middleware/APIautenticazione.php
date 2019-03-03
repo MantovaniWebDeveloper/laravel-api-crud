@@ -15,7 +15,25 @@ class APIautenticazione
      */
     public function handle($request, Closure $next)
     {
-        dd('sono middleware dario');
+        //dd($request->header('authorization'));
+        //controllo se è stato inserito il valore per authorization
+        if(empty($request->header('Authorization'))){
+
+          return response()->json([
+            'errore' => 'autorizzazione mancante'
+          ]);
+
+        }
+        //recupero la chiave dal env
+        $chiaveAPI = config('app.api_chiave');
+        //controllo se è stato inserito il valore per authorization inserito sia giusto
+        if($request->header('Authorization') != $chiaveAPI){
+
+          return response()->json([
+            'errore' => 'chiave inserita sbagliata!'
+          ]);
+
+        }
         return $next($request);
     }
 }

@@ -27,6 +27,18 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+    /*
+    |--------------------------------------------------------------------------
+    | Application chiave API
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the "environment" your application is currently
+    | running in. This may determine how you prefer to configure various
+    | services the application utilizes. Set this in your ".env" file.
+    |
+    */
+
+    'api_chiave' => env('API_AUTH', 'prova'),
 
     /*
     |--------------------------------------------------------------------------
