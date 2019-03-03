@@ -17,8 +17,8 @@ Route::get('/', function() {
   return 'ciao sono api';
 });
 //ho creato un gruppo di rotte e passato un unico namespace cosi da non ripetere Api
-
-Route::namespace('Api')->group(function() {
+//aggiunto il mio middleware 
+Route::middleware('apiAutenticazione')->namespace('Api')->group(function() {
 
   Route::get('/products', 'ProductController@index');
   Route::post('/products', 'ProductController@create');
@@ -26,5 +26,5 @@ Route::namespace('Api')->group(function() {
   //sarebbe put
   Route::post('/products/{id}', 'ProductController@update');
   Route::delete('/products/{id}/delete', 'ProductController@delete');
-  
+
 });
