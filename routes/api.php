@@ -16,10 +16,15 @@ use Illuminate\Http\Request;
 Route::get('/', function() {
   return 'ciao sono api';
 });
+//ho creato un gruppo di rotte e passato un unico namespace cosi da non ripetere Api
 
+Route::namespace('Api')->group(function() {
 
-Route::get('/products', 'Api\ProductController@index');
-Route::post('/products', 'Api\ProductController@create');
-Route::get('/products/{id}', 'Api\ProductController@show');
-//sarebbe put
-Route::post('/products/{id}', 'Api\ProductController@update');
+  Route::get('/products', 'ProductController@index');
+  Route::post('/products', 'ProductController@create');
+  Route::get('/products/{id}', 'ProductController@show');
+  //sarebbe put
+  Route::post('/products/{id}', 'ProductController@update');
+  Route::delete('/products/{id}/delete', 'ProductController@delete');
+  
+});

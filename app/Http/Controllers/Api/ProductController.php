@@ -82,4 +82,22 @@ class ProductController extends Controller
 
 
     }
+
+    public function delete($id){
+
+      $prodottoDaEliminare = Product::find($id);
+
+      if(empty($prodottoDaEliminare)){
+
+        return response()->json([
+          'errore' => 'Id passato inesistente'
+        ]);
+
+      }
+
+      $prodottoDaEliminare->delete();
+
+      //scelgo il metodo di lasciare array vuoto come risultato
+      return response()->json([]);
+    }
 }
